@@ -17,4 +17,6 @@ import Foundation
 struct Person: Identifiable {
     var id = UUID()
     var name: String
+    var relationship: String
+    var isCrying: Bool = false
 }

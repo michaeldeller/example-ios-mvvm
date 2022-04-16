@@ -33,15 +33,32 @@ class ViewModel: ObservableObject {
         family = familyMembers
     }
     
+    func sleep(member: Person) {
+        print("sleep functioned: \(member.name)")
+        let index = indexOf(member: member)
+        print("index: \(index)")
+        family[index].isCrying.toggle()
+    }
+    
+    func indexOf(member: Person) -> Int {
+        for index in 0..<family.count {
+            if family[index].id == member.id {
+                print("match: \(family[index].name)")
+                return(index)
+            }
+        }
+        return 0
+    }
+    
 }
 
 let familyMembers = [
-    Person(name: "Mike"),
-    Person(name: "Carol"),
-    Person(name: "Greg"),
-    Person(name: "Marcia"),
-    Person(name: "Peter"),
-    Person(name: "Jan"),
-    Person(name: "Bobby"),
-    Person(name: "Cindy")
+    Person(name: "Mike", relationship: "Father", isCrying: false),
+    Person(name: "Carol", relationship: "Mother", isCrying: false),
+    Person(name: "Greg", relationship: "Son", isCrying: false),
+    Person(name: "Marcia", relationship: "Daughter", isCrying: false),
+    Person(name: "Peter", relationship: "Son", isCrying: false),
+    Person(name: "Jan", relationship: "Daughter", isCrying: false),
+    Person(name: "Bobby", relationship: "Son", isCrying: false),
+    Person(name: "Cindy", relationship: "Daughter", isCrying: false)
 ]

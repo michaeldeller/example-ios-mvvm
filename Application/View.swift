@@ -22,7 +22,13 @@ struct ContentView: View {
         ScrollView {
             
             ForEach (viewModel.family) { member in
-                Text(member.name).padding()
+                HStack {
+                    Text("\(member.name)").font(.largeTitle)
+                    Text("(crying: \(member.isCrying))" as String).font(.largeTitle)
+                }
+                .onTapGesture {
+                    viewModel.sleep(member: member)
+                }
             }
 
             Button("Reverse", action: {viewModel.reverseOrder() }).padding()
